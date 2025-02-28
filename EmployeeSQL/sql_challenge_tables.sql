@@ -40,18 +40,26 @@ CREATE TABLE "employees" (
 
 CREATE TABLE "dept_managers" (
     "dept_no" VARCHAR   NOT NULL,
-    "emp_no" int   NOT NULL
+    "emp_no" int   NOT NULL,
+	CONSTRAINT "pk_dept_managers" PRIMARY KEY (
+		"dept_no", "emp_no"
+	)
 );
 
 CREATE TABLE "dept_employees" (
     "emp_no" int   NOT NULL,
-    "dept_no" VARCHAR   NOT NULL
+    "dept_no" VARCHAR   NOT NULL,
+	CONSTRAINT "pk_dept_managers" PRIMARY KEY (
+		"emp_no", "dept_no"
+	)
 );
--- both emp_no and dept_no are composite keys
 
 CREATE TABLE "salaries" (
     "emp_no" int   NOT NULL,
-    "salary" money   NOT NULL
+    "salary" money   NOT NULL,
+	CONSTRAINT "pk_salaries" PRIMARY KEY (
+		"emp_no"
+	)
 );
 
 ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title" FOREIGN KEY("emp_title")
